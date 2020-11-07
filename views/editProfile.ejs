@@ -1,15 +1,11 @@
-<div class="jumbotron">
-  <h1>Your Profile</h1>
-  <p>
-    Update your profile information!
-  </p>
-</div>
-
+<div class="container">
+  <h1>Edit Your Profile</h1>
+<form method="post" action="editProfile">
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-6">
   </div>
-  <form method="post" action="editProfile">
-    <div class="col-sm-4">
+
+    <div class="col-sm-6">
         <table class="table table-bordered">
           <tbody>
             <tr>
@@ -21,7 +17,7 @@
               <td><%= user.googleemail %></td>
             </tr>
             <tr>
-              <td>username</td>
+              <td>Preferred Name</td>
               <td>
                 <input type="text" name="username"
                    value="<%= user.username %>">
@@ -41,12 +37,26 @@
                    value="<%= user.imageURL %>">
               </td>
             </tr>
+            <tr>
+              <td>Phone Number</td>
+              <td>
+                <input type="text" name="phone"
+                   value="<%= user.phone %>">
+              </td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>
+                <input type="text" name="address"
+                   value="<%= user.address %>">
+              </td>
+            </tr>
           </tbody>
         </table>
     </div>
 
-  <div class="col-sm-4">
-  </div>
+
 </div>
 <input class="btn btn-lg btn-danger" type="submit" value="update Profile">
 </form>
+</div>

@@ -119,11 +119,12 @@ app.post('/editProfile',
     isLoggedIn,
     async (req,res,next) => {
       try {
-        let username = req.body.username
-        let age = req.body.age
-        req.user.username = username
-        req.user.age = age
+
+        req.user.username = req.body.username
+        req.user.age = req.body.age
         req.user.imageURL = req.body.imageURL
+        req.user.phone = req.body.phone
+        req.user.address = req.body.address
         await req.user.save()
         res.redirect('/profile')
       } catch (error) {
