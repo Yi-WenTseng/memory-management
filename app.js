@@ -81,6 +81,29 @@ app.use('/publicprofile/:userId',
     }
 )
 
+//route for about page
+app.get('/about',
+  (req, res) => {
+    try{
+      console.log("about to show about!!")
+      res.render("about")
+    }catch(e){
+      console.log("There is an error in /about!")
+      next(e)
+    }
+  }
+)
+//route for alzheimer's page
+app.get('/alzheimers',
+  (req, res) => {
+    try{
+      console.log("about to show alzheimers")
+      res.render("alzheimers")
+    }catch(e){
+      console.log("Error in /alzheimers")
+      next(e)
+    }
+  });
 
 app.get('/profile',
     isLoggedIn,
