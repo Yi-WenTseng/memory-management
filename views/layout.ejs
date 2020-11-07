@@ -14,6 +14,7 @@
 
 	<div id="nav">
 			<h1 id="title"><a href="/"><span style="color:#00004D">WELCOME TO MEMORY MANAGEMENT</a></h1>
+			<br>
 		<div style='float:right; margin:10px;'>
 			<% if (!loggedIn) {%>
 			<div><a href="/auth/google" class="btn btn-info">
@@ -47,18 +48,15 @@
 				<span class="button">About</span>
 			</a>
 
-			<% if (!loggedIn){%>
-				<a href="/auth/google"}
+
 		</center>
 		</div>
 	</div>
-
-<script>
+<!--<script>
 				function myFunction() {
 					 document.getElementById("myDropdown").classList.toggle("show");
 				 }
-</script>
-
+</script>-->
 	<%- body %>
 
 </body>

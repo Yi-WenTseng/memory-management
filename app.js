@@ -24,7 +24,7 @@ const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const dbRouter = require('./routes/db');
-const toDoRouter = require('./routes/todo');
+//const toDoRouter = require('./routes/todo');
 
 
 
@@ -52,7 +52,7 @@ app.use('/dbdemo',
     (req,res) => res.render('dbdemo'))
 
 app.use('/db',dbRouter);
-app.use('/todo',toDoRouter);
+//app.use('/todo',toDoRouter);
 
 app.get('/profiles',
     isLoggedIn,
