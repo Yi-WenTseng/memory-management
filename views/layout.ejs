@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
-	<title>WELCOME TO MEMORY MANAGEMENT</title>
+	<title>MEMORY MANAGEMENT</title>
 	<link rel="shortcut icon" type="image/png" href="/images/icon.jpg" />
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/memory-management.css">
@@ -13,7 +13,7 @@
 
 
 	<div id="nav">
-			<h1 id="title"><a href="/"><span style="color:#005959">WELCOME TO MEMORY MANAGEMENT</a></h1>
+			<h1 id="title"><a href="/"><span style="color:#00004D">WELCOME TO MEMORY MANAGEMENT</a></h1>
 		<div style='float:right; margin:10px;'>
 			<% if (!loggedIn) {%>
 			<div><a href="/auth/google" class="btn btn-info">
@@ -46,6 +46,9 @@
 			<a href="/about">
 				<span class="button">About</span>
 			</a>
+
+			<% if (!loggedIn){%>
+				<a href="/auth/google"}
 		</center>
 		</div>
 	</div>
