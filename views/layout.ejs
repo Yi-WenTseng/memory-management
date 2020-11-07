@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
+	<title>SHARE NOTES</title>
+	<link rel="shortcut icon" type="image/png" href="/images/icon.png" />
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/share-notes.css">
+</head>
+<body>
+
+
+	<div id="nav">
+			<h1 style="text-indent: -70%"id="title"><a href="/"><span style="color:#005959">Share Notes</a></h1>
+		<div style='float:right; margin:10px;'>
+			<% if (!loggedIn) {%>
+			<div><a href="/auth/google" class="btn btn-info">
+				log in
+			</a></div>
+			<% } else  { %>
+				<div class="dropdown">
+				        <button onclick="myFunction()" class="dropbtn btn btn-info"><%= user.googleemail %></button>
+				        <div id="myDropdown" class="dropdown-content">
+				          <a href="/profile">Profile</a>
+				          <a href="/editProfile">Edit Profile</a>
+				          <a href="/logout">Logout</a>
+				        </div>
+				 </div>
+			<% } %>
+		</div>
+		<div><center>
+			<a href="/">
+				<span class="button">Home</span>
+			</a>
+			<a href="/courses">
+				<span class="button">Courses</span>
+			</a>
+			<% if (loggedIn) { %>
+				<a href="/addNote">
+					<span class="button">Add a note</span>
+				</a>
+			<% } %>
+
+			<a href="/about">
+				<span class="button">About</span>
+			</a>
+		</center>
+		</div>
+	</div>
+
+<script>
+				function myFunction() {
+					 document.getElementById("myDropdown").classList.toggle("show");
+				 }
+</script>
+
+	<%- body %>
+
+</body>
+
+</html>

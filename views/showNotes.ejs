@@ -1,0 +1,51 @@
+<div class="container">
+      <h1>Notes</h1>
+      <br>
+      <div class="card-columns">
+
+        <% notes.forEach(note => {%>
+
+
+            <div class="row">
+
+          <div class="card" style="width:40rem;">
+            <div class="card-body">
+              <h5 class="card-title">By <%= note.author %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Created at <%= note.createdAt %></h6>
+              <p class="card-text"><mark><a href="/showNotes/<%= note.subject %>/<%= note.courseID %>/<%= note.section %>/<%= note.term %> ">
+                <%= note.subject %><%= note.courseID %> <%= note.section %>
+                <%if(note.term==1193){%>
+                  Fall 2019
+                <%}else if(note.term==1201){%>
+                  Spring 2020
+                <%}else if(note.term==1202){%>
+                  Summer 2020
+                <%}else if(note.term==1203){%>
+                  Fall 2020
+                <%}%>: <%=note.title%> </a></mark></p>
+
+              <% if(note.note.length <= 186) { %>
+                <p class="card-text"><%= note.note%></p>
+              <% }else{ %>
+                <p class="card-text"><%= note.note.substring(0, 186) %> <a href="/showNoteInfo/<%= note._id %>"> ...</a></p>
+              <%  } %>
+
+                <% if (note.authorID.equals(user._id)){ %>
+                  [<a href="/editNote/<%= note._id %>" class="card-link">Edit</a>]
+                  [<a href="/remove/<%= note.subject %>/<%= note.courseID %>/<%=
+                      note.section %>/<%= note.term%>/<%= note._id %>" class="card-link">Delete</a>]
+                <% } %>
+                  [<a href="/rating/<%= note._id %>" class="card-link">Comment & Rating</a>]
+                  <br>
+                  [<a href="mailto:<%= note.authorEmail %>">Email the author</a>]
+                  [<a href="/showNoteInfo/<%= note._id %>">View details</a>]
+            </div>
+          </div>
+
+
+           </div>
+          <br>
+          <br><br>
+        <% }) %>
+      </div>
+</div>

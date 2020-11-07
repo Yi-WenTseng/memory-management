@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+  <div class="col-sm-6">
+    <% if (user.imageURL === "") { %>
+      <img src="/images/blank-profile-picture.png" alt="image of user">
+    <% }else{ %>
+      <img src="<%= user.imageURL %>" alt="image of user">
+    <% } %>
+
+  </div>
+  <div class="col-sm-6">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td><%= user.googlename %> </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= user.googleemail %> </td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td><%= user.username %> </td>
+          </tr>
+          <tr>
+            <td>Study At</td>
+            <td><%= user.university %> </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+          <td>&nbsp;</td>
+          <td><a href="/editProfile"><span style="color:#008080">Edit Profile</a></td>
+          </tr>
+          </tfoot>
+      </table>
+      <ul>
+        <li><a href="/showFilteredNotes">See your notes</a></li>
+        <li><a href="/showFavorites">See your favorite notes</a></li>
+      </ul>
+  </div>
+  </div>
+</div>

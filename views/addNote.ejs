@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="col-sm-6">
+    <img src="images/Sharing.jpg" alt="">
+  </div>
+  <div class="col-sm-6">
+    <h1>Reach out to other students!</h1>
+    <p>Upload your notes and share them with other students!</p>
+    <form action="/addNote" method="post">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" value="" placeholder="e.g. COSI" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="title">Course Title</label>
+        <input type="text" name="title" value="" placeholder="e.g. Web Application Development" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="courseID">Course Number</label>
+        <input type="text" name="courseID" value="" placeholder="e.g. 152A" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="subject">Course Section</label>
+        <input type="text" name="section" value="" placeholder="e.g. 1DL" class=" form-control">
+      </div>
+      <div class="form-group">
+        <label for="term">Term</label>
+        <input type="text" name="term" value="" placeholder="e.g. 1202" class=" form-control">
+        <small  class="text-muted">
+          1193 -> Fall 2019, 1201 ->Spring 2020, 1202 -> Summer 2020, 1203->Spring 2021
+        </small>
+      </div>
+
+      <!-- file including photos, pdf, or any type-->
+      <div>
+        <h5>Note</h5>
+        <textarea name="note" rows="5" cols="40"></textarea>
+      </div>
+      <br>
+
+      <!-- <div class="form-group">
+        <label for="notes">Note in File: </label>
+        <input type="file" class="form-control-file" name="pdf" value="" accpet="file_extension">
+      </div> -->
+      <!--<div class="form-group">
+        <label for="notes">Note in File: </label>
+        <input type="file" class="form-control-file" name="pdf" value="" accpet="file_extension">
+      </div>-->
+
+    <!--<embed src="study/sample.pdf" type="application/pdf"   height="300px" width="100%">
+      <embed src="study/sample.pdf" type="application/pdf"   height="300px" width="100%" class="responsive">
+<a href="study/sample.pdf">download</a>-->
+
+      <br>
+      <input class="button" type="submit" value="Submit">
+      <br>
+    </form>
+  </div>
+</div>

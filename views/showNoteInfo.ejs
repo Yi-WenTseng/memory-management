@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <h2><%= note.subject %><%= note.courseID %> <%= note.section %>
+    <%if(note.term==1193){%>
+      Fall 2019
+    <%}else if(note.term==1201){%>
+      Spring 2020
+    <%}else if(note.term==1202){%>
+      Summer 2020
+    <%}else if(note.term==1203){%>
+      Fall 2020
+    <%}%>: <%=note.title %></h2>
+  <h4>Created by <%= note.author %></h4>
+  <p>Created at <%= note.createdAt %></p>
+  <!--<div id="overall" value="">-->
+<br>
+  <%
+    var x = false; //x=false means that the note is not in the favorites array,
+    //so the button should be add to Favorite.
+
+    for(i=0; i<user.favorites.length; i++){
+      if(user.favorites[i].equals(note._id )){
+        x = true;
+      }
+    }
+
+  %>
+  <% if (!x) { %>
+    <form action="/addToFavorite/<%=note._id%>" method="post">
+      <input class="button" type="submit" value="Add to my favorites">
+    </form>
+  <% } %>
+
+
+
+  <br><h3>Notes: </h3><br>
+  <div class="panel panel-default">
+   <div class="panel-body"><%= note.note %> </div>
+ </div>
+  <br><br><br>
+</div>
+<div class="container">
+  <h3>Comments / Ratings: </h3>
+  <a href="/rating/<%= note._id %>" class="btn btn-info">+ Comment and Rating</a>
+  <br>
+  <br>
+
+  <% comments.forEach(comment => {%>
+    <div class="card" id="noteInfoCard" style="min-height:100px">
+      <div class="card-body">
+        <h5 class="card-title" style="color:blue"><%=comment.user%></h5>
+        <p class="card-text"><%= comment.comment %></p>
+        <p class="card-text"><repeat n="<%=comment.rate %>"></repeat></p>
+        <p class="card-text text-muted"><i>[Created at <%= comment.createdAt %>]</i></p>
+
+        <script>
+          var total=0;
+          total+=<%=comment.rate%>;
+          document.getElementById("overall")=total;
+          console.log(total);
+        </script>
+
+      </div>
+    </div>
+       <br>
+       <br>
+  <% }) %>
+
+</div>
+
+<style>
+
+  repeat[n="1"]:before {
+     content: "★";
+  }
+
+  repeat[n="2"]:before {
+     content: "★★";
+  }
+
+  repeat[n="3"]:before {
+     content: "★★★";
+  }
+
+  repeat[n="4"]:before {
+     content: "★★★★";
+  }
+
+  repeat[n="5"]:before {
+     content: "★★★★★";
+  }
+</style>
