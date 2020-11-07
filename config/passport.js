@@ -36,15 +36,11 @@ module.exports = function(passport) {
     // =========================================================================
     // GOOGLE ==================================================================
     // =========================================================================
-    const clientID = process.env.clientID
-    const clientSecret = process.env.clientSecret
-    const callbackURL = process.env.callbackURL
-
     passport.use(new GoogleStrategy({
 
-      clientID        : clientID,
-      clientSecret    : clientSecret,
-      callbackURL     : callbackURL,
+        clientID        : configAuth.googleAuth.clientID,
+        clientSecret    : configAuth.googleAuth.clientSecret,
+        callbackURL     : configAuth.googleAuth.callbackURL,
 
     },
     function(token, refreshToken, profile, done) {

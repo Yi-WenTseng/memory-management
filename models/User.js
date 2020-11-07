@@ -3,6 +3,7 @@
 const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 
+//var userSchema = mongoose.Schema( {any:{}})
 
 var userSchema = Schema( {
   googleid: String,
@@ -10,9 +11,8 @@ var userSchema = Schema( {
   googlename:String,
   googleemail:String,
   username:String,
-  university:String,
+  age:Number,
   imageURL: String,
-  favorites:[{type:Schema.Types.ObjectId, ref:"Note"}]
 } );
 
-module.exports = mongoose.model( 'UserT5', userSchema );
+module.exports = mongoose.model( 'User', userSchema );

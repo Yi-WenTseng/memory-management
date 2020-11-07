@@ -1,7 +1,8 @@
 "use strict";
 
 
-const courses = require("../private/courses.json");
+//const courses = require("../private/courses.json");
+
 //console.log(`courses.length = ${courses.length}`);
 //console.log(JSON.stringify(courses[0],null,2));
 

@@ -1,34 +1,52 @@
-<div class="container">
-<div class="col-sm-6">
-  <img src="/images/blank-profile-picture.png" alt="image of users">
+<div class="jumbotron">
+  <h1>Your Profile</h1>
+  <p>
+    Update your profile information!
+  </p>
 </div>
-<div class="col-sm-6">
-<form method="post" action="editProfile"><center>
-  <center> <h3><%= user.googlename %></h3>
-    <h4><%= user.googleemail %></h4> </center>
-  <br>
-  <div class="form-group row" style="text-align:right">
-    <label for="username" class="col-sm-6 col-form-label" >Change Username: </label>
-    <div class="col-sm-6" style="text-align:left">
-      <input type="text" name="username" value="<%=user.username %>">
+
+<div class="row">
+  <div class="col-sm-4">
+  </div>
+  <form method="post" action="editProfile">
+    <div class="col-sm-4">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>googlename</td>
+              <td><%= user.googlename %></td>
+            </tr>
+            <tr>
+              <td>googleemail</td>
+              <td><%= user.googleemail %></td>
+            </tr>
+            <tr>
+              <td>username</td>
+              <td>
+                <input type="text" name="username"
+                   value="<%= user.username %>">
+              </td>
+            </tr>
+            <tr>
+              <td>age</td>
+              <td>
+                <input type="text" name="age"
+                   value="<%= user.age %>">
+              </td>
+            </tr>
+            <tr>
+              <td>imageURL</td>
+              <td>
+                <input type="text" name="imageURL"
+                   value="<%= user.imageURL %>">
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
+
+  <div class="col-sm-4">
   </div>
-  <div class="form-group row" style="text-align:right">
-    <label for="university" class="col-sm-6 col-form-label">Current Institution</label>
-    <div class="col-sm-6" style="text-align:left">
-      <input type="text" name="university" value="<%=user.university %>">
-    </div>
-  </div>
-  <div class="form-group row" style="text-align:right">
-    <label for="imageURL" class="col-sm-6 col-form-label">Change Image by URL: </label>
-    <div class="col-sm-6" style="text-align:left">
-      <input type="text" name="imageURL" value="<%=user.imageURL %>">
-    </div>
-  </div>
-<br>
-  <div>
-    <input class="btn btn-sm btn-info" type="submit" value="Update Profile">
-  </div>
+</div>
+<input class="btn btn-lg btn-danger" type="submit" value="update Profile">
 </form>
-</div>
-</div>

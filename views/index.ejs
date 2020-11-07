@@ -1,54 +1,14 @@
-<div class="container">
-  <h3>
-    <p style="font-size:120%;text-align: center;"><i>Alone, we can do so little;
-    Together, we can do so much.</i></p>
-    <p style="font-size:80%;text-align: right;">- Helen Keller</p>
-  </h3>
-  <br>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <div class="col-sm-6">
-        <img src="images/Homebg.jpg" alt="">
-      </div>
-      <div class="col-sm-6">
-        <h4>Do you find yourself unable to jot down
-            EVERYTHING your professor talks about in class?
-          <br><br>
-          Do you find yourself longing for the professor to
-          UPLOAD his/her lecture slides in a timely manner?
-        </h4>
-      </div>
-    </div>
+
+
+  <div class="jumbotron">
+    <h1> Memory Management </h1>
+    <p>Welcome to the Memory Management </p>
+    <ul>
+      <li><a href="/dbdemo">See database API </a></li>
+      <% if (loggedIn) {%>
+      <li><a href="/profile">See your profile </a></li>
+      <li><a href="/profiles">See everyone's profile</a></li>
+      <li><a href="/todo">See your to do list </a></li>
+      <% } %>
+    </ul>
   </div>
-
-    <h1 style="color:#008080;text-align: center;font-weight:700;font-size:250%">We do!
-      <br>
-    </h1>
-    <br>
-    <div class="jumbotron jumbotron-fluid">
-      <p style="color:#008080;">
-      If your answer is also <span style="font-weight:500;color:#008080;">YES</span>, we've found a solution:</p>
-    <h4><b>* Your classmates can help</b></h4>
-    <p> Find your course under <a href="/courses"><span style="color:#008080;font-style: italic;font-weight:500;">the courses tab</a> and browse
-       through your classmates' notes!</p>
-    <h4><b>* Support your classmates</b></h4>
-    <p> When you feel inspired to contribute, login in and head over to <% if (loggedIn) {%>
-    <a href="/addNote"><span style="color:#008080;font-style: italic;font-weight:500;">
-      add a note
-    </a>
-    <% }else{%>
-      add a note
-    <%}%>
-       yourself.</p>
-   <h4><b>* Connect with your classmates</b></h4>
-      <h5>School is more than great exam results.</h5>
-   <p style="color:#008080;"> Create a community-oriented environment by sharing with and learning
-   from each other and by commenting under your classmates' notes. </p>
-   </div>
-
-   <br>
-     <a href="/about"><span style="color:#008080;font-weight:bold;text-align: center;">
-       <h1> <center>Contact us!</center></h1> </a>
-   <br>
-   <br>
-</div>
