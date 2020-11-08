@@ -7,8 +7,8 @@
 <hr>
 <div class="row">
   <div class="col-sm-6">
-    <% if (user.imageURL === "") { %>
-      <img src="/images/blank-profile-picture.png" alt="image of user">
+    <% if (user.imageURL=="") { %>
+      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="image of user">
     <% }else{ %>
       <img src="<%= user.imageURL %>" alt="image of user">
     <% } %>
