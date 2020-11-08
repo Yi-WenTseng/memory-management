@@ -1,16 +1,16 @@
 <div class="container">
   <h3>
-    <p style="color:#a94864;font-size:120%;text-align: center;font-weight:700;">Add a Medication</p>
+    <p style="color:#a94864;font-size:120%;text-align: center;font-weight:700;">Edit Your Medication</p>
   </h3>
   <br>
-  <form action="/addMedication" method="post">
+  <form action="/editMed/<%=med._id%>" method="post">
       <div class="form-group">
         <label for="name">Name of Medication</label>
-        <input type="text" name="name" value="" placeholder="e.g. Donepezil" class=" form-control">
+        <input type="text" name="name" value=" <%= med.name %>" class=" form-control">
       </div>
       <div class="form-group">
         <label for="dose">Dose</label>
-        <input type="text" name="dose" value="" placeholder="e.g. 5mg" class=" form-control">
+        <input type="text" name="dose" value="<%= med.dose %>"" placeholder="e.g. 5mg" class=" form-control">
       </div>
       <div class="form-group">
         <label for="time">Time</label>
@@ -26,7 +26,7 @@
 
       <div>
         <h5>Note</h5>
-        <textarea name="note" rows="2" cols="20"></textarea>
+        <textarea name="note" rows="2" cols="20"> <%= med.note %></textarea>
       </div>
       <br>
 

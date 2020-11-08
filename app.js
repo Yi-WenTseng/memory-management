@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const layouts = require("express-ejs-layouts");
 const auth = require('./config/auth.js');
+const Medicine = require("./models/Medicine");
 
 
 const mongoose = require( 'mongoose' );
@@ -53,33 +54,34 @@ app.use('/dbdemo',
 
 app.use('/db',dbRouter);
 //app.use('/todo',toDoRouter);
+//
+// app.get('/profiles',
+//     isLoggedIn,
+//     async (req,res,next) => {
+//       try {
+//         res.locals.profiles = await User.find({})
+//         res.render('profiles')
+//       }
+//       catch(e){
+//         next(e)
+//       }
+//     }
+//   )
+//
+// app.use('/publicprofile/:userId',
+//     async (req,res,next) => {
+//       try {
+//         let userId = req.params.userId
+//         res.locals.profile = await User.findOne({_id:userId})
+//         res.render('publicprofile')
+//       }
+//       catch(e){
+//         console.log("Error in /profile/userId:")
+//         next(e)
+//       }
+//     }
+// )
 
-app.get('/profiles',
-    isLoggedIn,
-    async (req,res,next) => {
-      try {
-        res.locals.profiles = await User.find({})
-        res.render('profiles')
-      }
-      catch(e){
-        next(e)
-      }
-    }
-  )
-
-app.use('/publicprofile/:userId',
-    async (req,res,next) => {
-      try {
-        let userId = req.params.userId
-        res.locals.profile = await User.findOne({_id:userId})
-        res.render('publicprofile')
-      }
-      catch(e){
-        console.log("Error in /profile/userId:")
-        next(e)
-      }
-    }
-)
 
 //route for showing medication page
 app.get('/medication',
@@ -88,16 +90,16 @@ app.get('/medication',
     try {
       let authorID = req.user._id
       const query={
-        authorID:authorID
+         authorID:authorID
       }
-      res.locals.medications =
-          await Medicine.find(query)
-      res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
+      console.log("Finding medications... ");
+      res.locals.medications = await Medicine.find(query)
+      //res.locals.notes.sort((a,b) => b.time - a.time)
       res.render('medication')
     } catch (e) {
       console.dir(e)
       console.log("Error:")
-      res.send("There was an error in /showFilteredNotes!")
+      res.send("There was an error in /medication!")
       next(e)
     }
   }
@@ -117,8 +119,9 @@ app.post('/addMedication',
       let name = req.body.name
       let dose = req.body.dose
       let time = req.body.time
+      let note = req.body.note
       let newMedicine = new Medicine({authorID:authorID, author:author,
-      name:name, dose:dose, time:time})
+      name:name, dose:dose, time:time, note:note})
       await newMedicine.save()
       res.redirect(`/medication/` )
     }
@@ -127,6 +130,44 @@ app.post('/addMedication',
       res.send("error in /addMedication")
     }
 })
+
+app.get('/remove/:itemId',
+  isLoggedIn,
+  async(req, res,next) =>{
+      await Medicine.remove({_id:req.params.itemId});
+      res.redirect('/medication/')
+  }
+)
+
+//Edit function
+app.get('/editMed/:itemId',
+    isLoggedIn,
+    async(req, res, next) => {
+      try {
+        res.locals.med = await Medicine.findOne({_id:req.params.itemId})
+        res.render('editMed')
+      } catch (e) {
+        next(e)
+      }
+    }
+  )
+
+app.post('/editMed/:itemId',
+  isLoggedIn,
+  async(req, res, next) => {
+    try {
+      let doc = await Medicine.findOne({_id:req.params.itemId})
+      doc.name = req.body.name
+      doc.time = req.body.time
+      doc.dose = req.body.dose
+      doc.note = req.body.note
+      await doc.save()
+      res.redirect(`/medication/`)
+    } catch (e) {
+      next(e)
+    }
+  }
+)
 
 //route for about page
 app.get('/about',
@@ -140,6 +181,13 @@ app.get('/about',
     }
   }
 )
+app.get("/jennifer", (req, res) => {
+  res.render("jennifer");
+});
+
+app.get("/yi-wen", (req, res) => {
+  res.render("yi-wen");
+});
 //route for alzheimer's page
 app.get('/alzheimers',
   (req, res) => {

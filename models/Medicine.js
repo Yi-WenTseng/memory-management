@@ -8,7 +8,8 @@ var medicineSchema = Schema( {
   authorID: ObjectId,
   author: String,
   dose: String,
-  time: String
+  time: String,
+  note: String
 } );
 
 module.exports = mongoose.model( 'MedicineItem', medicineSchema );

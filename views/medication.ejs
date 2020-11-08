@@ -1,9 +1,34 @@
 <div class="container">
   <h3>
-    <p style="font-size:120%;text-align: center;"><i>My Medication</i></p>
+    <p style="color:#a94864;font-weight:700;font-size:120%;text-align: center;">My Medications</p>
   </h3>
   <br>
-  
+  <h4>Table sorted by time</h4>
+  <table style="width:100%">
+    <tr>
+      <th>Time</th>
+      <th>Name of Medication</th>
+      <th>Dose</th>
+      <th>Note</th>
+      <th></th>
+    </tr>
+    <% medications.forEach(med => {%>
+    <tr>
+      <td> <%= med.time%></td>
+      <td><%= med.name%></td>
+      <td><%= med.dose%></td>
+      <td><%= med.note%></td>
+      <td>
+        [<a href="/editMed/<%= med._id%>">Edit</a>]
+        [<a href="/remove/<%= med._id %>">Delete</a>]
+      </td>
+    </tr>
+    <% }) %>
+
+  </table>
+    <a href="/addMedication">
+      <span style="color:#c06c84;font-weight:500;">
+      Add a New Medication</a>
    <br>
    <br>
 </div>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
-	<title>MEMORY MANAGEMENT</title>
+	<title>Memory Management</title>
 	<link rel="shortcut icon" type="image/png" href="/images/icon.jpg" />
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/memory-management.css">
@@ -13,24 +13,9 @@
 
 
 	<div id="nav">
-			<h1 id="title"><a href="/"><span style="color:#00004D">WELCOME TO MEMORY MANAGEMENT</a></h1>
+			<h1 id="title"><a href="/"><span style="color:#00004D">Memory Management</a></h1>
 			<br>
-		<div style='float:right; margin:10px;'>
-			<% if (!loggedIn) {%>
-			<div><a href="/auth/google" class="btn btn-info">
-				log in
-			</a></div>
-			<% } else  { %>
-				<div class="dropdown">
-				        <button onclick="myFunction()" class="dropbtn btn btn-info"><%= user.googleemail %></button>
-				        <div id="myDropdown" class="dropdown-content">
-				          <a href="/profile">Profile</a>
-				          <a href="/editProfile">Edit Profile</a>
-				          <a href="/logout">Logout</a>
-				        </div>
-				 </div>
-			<% } %>
-		</div>
+
 		<div><center>
 			<a href="/">
 				<span class="button">Home</span>
@@ -52,11 +37,7 @@
 		</center>
 		</div>
 	</div>
-<script>
-				function myFunction() {
-					 document.getElementById("myDropdown").classList.toggle("show");
-				 }
-</script>
+
 	<%- body %>
 
 </body>

@@ -1,3 +1,22 @@
+<div class="row">
+  <div style='float:right; margin:40px;'>
+    <% if (!loggedIn) {%>
+    <div><a href="/auth/google" class="btn btn-info">
+      log in
+    </a></div>
+    <% } else  { %>
+      <div class="dropdown">
+              <button onclick="myFunction()" class="dropbtn btn btn-info"><%= user.googleemail %></button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="/profile">Profile</a>
+                <a href="/editProfile">Edit Profile</a>
+                <a href="/logout">Logout</a>
+              </div>
+       </div>
+    <% } %>
+  </div>
+</div>
+
 <div class="container">
   <h3>
     <p style="font-size:120%;text-align: center;"><i>Alone, we can do so little;
@@ -51,4 +70,10 @@
        <h1> <center>Contact us!</center></h1> </a>
    <br>
    <br>
+
 </div>
+<script>
+       function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+</script>
