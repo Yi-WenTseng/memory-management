@@ -3,7 +3,7 @@
 */
 const express = require('express');
 const router = express.Router();
-const Medicine = require('../models/ToDoItem')
+const Medicine = require('../models/Medicine')
 
 
 /*

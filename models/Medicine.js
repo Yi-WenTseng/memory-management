@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var medicineSchema = Schema( {
-  name: String,
+  name: String,  //name of medication, not person
+  authorID: ObjectId,
+  author: String,
   dose: String,
   time: String
 } );

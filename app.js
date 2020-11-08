@@ -81,6 +81,53 @@ app.use('/publicprofile/:userId',
     }
 )
 
+//route for showing medication page
+app.get('/medication',
+  isLoggedIn,
+  async(req, res,next) => {
+    try {
+      let authorID = req.user._id
+      const query={
+        authorID:authorID
+      }
+      res.locals.medications =
+          await Medicine.find(query)
+      res.locals.notes.sort((a,b) => b.createdAt - a.createdAt)
+      res.render('medication')
+    } catch (e) {
+      console.dir(e)
+      console.log("Error:")
+      res.send("There was an error in /showFilteredNotes!")
+      next(e)
+    }
+  }
+)
+
+app.get("/addMedication",
+  (req,res) =>{
+    res.render("addMedication")
+  }
+)
+
+app.post('/addMedication',
+  async (req,res) => {
+    try {
+      let authorID = req.user._id
+      let author = req.user.googlename
+      let name = req.body.name
+      let dose = req.body.dose
+      let time = req.body.time
+      let newMedicine = new Medicine({authorID:authorID, author:author,
+      name:name, dose:dose, time:time})
+      await newMedicine.save()
+      res.redirect(`/medication/` )
+    }
+    catch(e) {
+      console.dir(e)
+      res.send("error in /addMedication")
+    }
+})
+
 //route for about page
 app.get('/about',
   (req, res) => {
