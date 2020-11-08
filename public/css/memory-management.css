@@ -52,10 +52,17 @@ table, th, td {
   width:100%;
   table-layout: fixed;
   font-weight: normal;
+  font-size: 18px;
 }
 
 th, td {
-  padding: 5px;
+  padding: 6px;
+  text-align: center;
+}
+th{
+  text-align: center;
+  font-weight: bold;
+  color: #6c5b7b;
 }
 
 h4{

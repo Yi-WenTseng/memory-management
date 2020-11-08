@@ -1,0 +1,92 @@
+
+
+<div class="container">
+    <h1>
+      <p style="color:#a94864;font-size:120%;text-align: center;font-weight:700;"><%= user.googlename %>'s Daily Care Plan</p>
+      </h1>
+    <br><br>
+
+    <h3><p style="color:#a94864;text-align: left;font-weight:700;font-size:100%">Morning</p></h3><br>
+      <div class="container">
+        <h4>
+          <% tasks.forEach(task => { %>
+            <% if(task.time==("Morning")) {%>
+               <a href="/tasks/remove/<%=task._id %>">X</a>
+                --
+               <%= task.activity %>
+              <br>
+              <% } %>
+          <% }) %>
+        </h4>
+      </div>
+
+      <h3><p style="color:#a94864;text-align: left;font-weight:700;font-size:100%">Afternoon</p></h3><br>
+        <div class="container">
+          <h4>
+            <% tasks.forEach(task => { %>
+              <% if(task.time==("Afternoon")) {%>
+                 <a href="/tasks/remove/<%=task._id %>">X</a>
+                  --
+                 <%= task.activity %>
+                <br>
+                <% } %>
+            <% }) %>
+          </h4>
+        </div>
+
+        <h3><p style="color:#a94864;text-align: left;font-weight:700;font-size:100%">Evening</p></h3><br>
+          <div class="container">
+            <h4>
+              <% tasks.forEach(task => { %>
+                <% if(task.time==("Evening")) {%>
+                   <a href="/tasks/remove/<%=task._id %>">X</a>
+                    --
+                   <%= task.activity %>
+                  <br>
+                  <% } %>
+              <% }) %>
+            </h4>
+
+          </div>
+
+          <h3><p style="color:#a94864;text-align: left;font-weight:700;font-size:100%">Any Time</p></h3><br>
+            <div class="container">
+              <h4>
+                <% tasks.forEach(task => { %>
+                  <% if(task.time==("")) {%>
+                     <a href="/tasks/remove/<%=task._id %>">X</a>
+                      --
+                     <%= task.activity %>
+                    <br>
+                    <% } %>
+                <% }) %>
+              </h4>
+
+            </div>
+
+      <br><br>
+
+        <hr>
+
+        <form method="post" action="/tasks/addTask">
+          <div class="form-group">
+            <label for="time">Time</label>
+            <select class="form-control" name="time">
+                        <option value="">Any Time</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                      </select>
+          </div>
+          <div class="form-group">
+            <label for="activity">Activity</label>
+            <br>
+            <input type="text" name="activity" placeholder="e.g. Do some gardening" class=" form-control"><br><br>
+          </div>
+          <input class="button" type="submit" value="Add a new activity">
+
+        </form>
+
+
+
+</div>

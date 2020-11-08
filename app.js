@@ -7,6 +7,7 @@ const cors = require('cors');
 const layouts = require("express-ejs-layouts");
 const auth = require('./config/auth.js');
 const Medicine = require("./models/Medicine");
+const Task = require("./models/Task");
 
 
 const mongoose = require( 'mongoose' );
@@ -166,6 +167,56 @@ app.post('/editMed/:itemId',
     } catch (e) {
       next(e)
     }
+  }
+)
+
+app.get('/tasks',
+  isLoggedIn,
+  async(req, res,next) => {
+    try {
+      let userId = req.user._id
+      const query={
+         userId:userId
+      }
+      console.log("Finding tasks... ");
+      res.locals.tasks = await Task.find(query)
+      //res.locals.notes.sort((a,b) => b.time - a.time)
+      res.render('tasks')
+    } catch (e) {
+      console.dir(e)
+      console.log("Error:")
+      res.send("There was an error in /tasks!")
+      next(e)
+    }
+  }
+)
+
+app.post('/tasks/addTask',
+  isLoggedIn,
+  async(req, res, next) => {
+    try{
+      let newTask = new Task({
+        user:req.user.googlename,
+        userId:req.user._id,
+        time:req.body.time,
+        activity:req.body.activity
+      })
+      console.log("saving a new task... ");
+      await newTask.save();
+      res.redirect('/tasks/')
+    }catch(e){
+      console.log("Error:")
+      res.send("There was an error in posting tasks!")
+      next(e)
+    }
+  }
+)
+
+app.get('/tasks/remove/:itemId',
+  isLoggedIn,
+  async(req, res,next) =>{
+      await Task.remove({_id:req.params.itemId});
+      res.redirect('/tasks/')
   }
 )
 
